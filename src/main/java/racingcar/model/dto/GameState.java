@@ -3,9 +3,13 @@ package racingcar.model.dto;
 import java.util.List;
 
 public class GameState {
-    final List<CarState> pairs;
+    final List<CarState> carStates;
 
-    public GameState(List<CarState> pairs){
-        this.pairs = pairs;
+    public GameState(List<CarState> carStates){
+        this.carStates = carStates;
+    }
+
+    public List<CarState> getCarStates() {
+        return carStates;
     }
 }
