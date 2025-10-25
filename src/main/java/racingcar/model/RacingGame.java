@@ -52,6 +52,7 @@ public class RacingGame {
             if(maxDistance < car.getDistance()){
                 winnerNames = new ArrayList<>();
                 winnerNames.add(car.getName());
+                maxDistance = car.getDistance();
             }
             else if (maxDistance == car.getDistance()){
                 winnerNames.add(car.getName());
