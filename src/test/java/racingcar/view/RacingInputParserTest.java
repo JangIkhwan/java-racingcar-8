@@ -72,7 +72,7 @@ class RacingInputParserTest {
 
     @DisplayName("전진 횟수가 자연수가 아니면 예외가 발생한다")
     @ParameterizedTest
-    @ValueSource(strings = {"3.14", "하나", "1개"})
+    @ValueSource(strings = {"3.14", "하나", "1개", "-1"})
     void shouldThrowExceptionWhenMoveNumberIsNotInteger(String number){
         assertThatThrownBy(() -> inputParser.parseMoveNumber(number))
                 .isInstanceOf(IllegalArgumentException.class);
