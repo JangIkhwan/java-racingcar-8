@@ -10,4 +10,12 @@ public class GameResult {
         this.gameStates = gameStates;
         this.winnerNames = winnerNames;
     }
+
+    public List<GameState> getGameStates(){
+        return this.gameStates;
+    }
+
+    public List<String> getWinnerNames(){
+        return this.winnerNames;
+    }
 }
