@@ -29,7 +29,7 @@ public class RacingCarList {
     public GameState getState(){
         List<CarState> carStates = new ArrayList<>();
         for(RacingCar car : racingCars){
-            carStates.add(new CarState(car.getName(), car.getDistance()));
+            carStates.add(car.getState());
         }
         return new GameState(carStates);
     }
