@@ -8,16 +8,16 @@ import java.util.List;
 
 public class RacingGame {
     private RacingCarList carList;
-    private int moveNumber;
+    private MoveNumber moveNumber;
 
     public RacingGame(CarNameList carNameList, MoveNumber moveNumber, CarMovingStrategy movingStrategy){
         this.carList = new RacingCarList(carNameList, movingStrategy);
-        this.moveNumber = moveNumber.getValue();
+        this.moveNumber = moveNumber;
     }
 
     public GameResult play() {
         List<GameState> gameStates = new ArrayList<>();
-        for(int move = 0; move < moveNumber; move++){
+        for(int move = 0; move < moveNumber.getValue(); move++){
             carList.moveCars();
             gameStates.add(carList.getState());
         }
