@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import racingcar.model.dto.CarName;
 import racingcar.model.dto.CarNameList;
+import racingcar.model.dto.MoveNumber;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -64,10 +65,10 @@ class RacingInputParserTest {
         final String line = "1";
 
         // when
-        int moveNumber = inputParser.parseMoveNumber(line);
+        MoveNumber moveNumber = inputParser.parseMoveNumber(line);
 
         // then
-        assertThat(moveNumber).isEqualTo(1);
+        assertThat(moveNumber.getValue()).isEqualTo(1);
     }
 
     @DisplayName("전진 횟수가 자연수가 아니면 예외가 발생한다")
