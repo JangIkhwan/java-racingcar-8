@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import racingcar.model.dto.*;
+import racingcar.model.strategy.CarMovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +10,8 @@ public class RacingGame {
     private RacingCarList carList;
     private int moveNumber;
 
-    public RacingGame(CarNameList carNameList, MoveNumber moveNumber){
-        this.carList = new RacingCarList(carNameList);
+    public RacingGame(CarNameList carNameList, MoveNumber moveNumber, CarMovingStrategy movingStrategy){
+        this.carList = new RacingCarList(carNameList, movingStrategy);
         this.moveNumber = moveNumber.getValue();
     }
 

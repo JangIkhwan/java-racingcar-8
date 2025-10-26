@@ -1,19 +1,23 @@
 package racingcar.model;
 
 import racingcar.model.dto.CarName;
+import racingcar.model.strategy.CarMovingStrategy;
 
 public class RacingCar {
     private String name;
     private int distance;
+    private CarMovingStrategy movingStrategy;
 
-    public RacingCar(String name) {
-        this.name = name;
-        this.distance = 0;
-    }
-
-    public RacingCar(CarName name) {
+    public RacingCar(CarName name, CarMovingStrategy movingStrategy) {
         this.name = name.getValue();
         this.distance = 0;
+        this.movingStrategy = movingStrategy;
+    }
+
+    public void move(){
+        if (movingStrategy.movable()){
+            goForward();
+        }
     }
 
     public void goForward() {

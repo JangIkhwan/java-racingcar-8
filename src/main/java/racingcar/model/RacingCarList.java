@@ -1,10 +1,10 @@
 package racingcar.model;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.model.dto.CarName;
 import racingcar.model.dto.CarNameList;
 import racingcar.model.dto.CarState;
 import racingcar.model.dto.GameState;
+import racingcar.model.strategy.CarMovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,20 +12,17 @@ import java.util.List;
 public class RacingCarList {
     private List<RacingCar> racingCars = new ArrayList<>();
 
-    public RacingCarList(CarNameList carNameList){
+    public RacingCarList(CarNameList carNameList, CarMovingStrategy movingStrategy){
         if(carNameList.length() <= 0){
             throw new IllegalArgumentException("자동차는 1대 이상이어야 합니다.");
         }
         for(CarName name : carNameList.getCarNames())
-            this.racingCars.add(new RacingCar(name));
+            this.racingCars.add(new RacingCar(name, movingStrategy));
     }
 
     public void moveCars() {
         for(RacingCar car : racingCars){
-            int rand = Randoms.pickNumberInRange(0, 9);
-            if(rand >= 4) {
-                car.goForward();
-            }
+            car.move();
         }
     }
 
