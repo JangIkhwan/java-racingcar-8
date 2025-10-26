@@ -1,12 +1,13 @@
 package racingcar.view.dto;
 
 import racingcar.model.dto.CarNameList;
+import racingcar.model.dto.MoveNumber;
 
 public class RacingInput {
     private final CarNameList carNameList;
-    private final int moveNumber;
+    private final MoveNumber moveNumber;
 
-    public RacingInput(CarNameList carNameList, int moveNumber) {
+    public RacingInput(CarNameList carNameList, MoveNumber moveNumber) {
         this.carNameList = carNameList;
         this.moveNumber = moveNumber;
     }
@@ -15,7 +16,7 @@ public class RacingInput {
         return this.carNameList;
     }
 
-    public int getMoveNumber(){
+    public MoveNumber getMoveNumber(){
         return this.moveNumber;
     }
 }

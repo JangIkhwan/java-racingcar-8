@@ -10,12 +10,12 @@ public class RacingGame {
     private List<RacingCar> cars = new ArrayList<>();
     private int moveNumber;
 
-    public RacingGame(CarNameList carNameList, int moveNumber){
+    public RacingGame(CarNameList carNameList, MoveNumber moveNumber){
         this.cars = carNameList.getCarNames().stream()
                 .map(name -> new RacingCar(name))
                 .toList();
 
-        this.moveNumber = moveNumber;
+        this.moveNumber = moveNumber.getValue();
     }
 
     public GameResult play() {

@@ -2,6 +2,7 @@ package racingcar.view;
 
 import racingcar.model.dto.CarName;
 import racingcar.model.dto.CarNameList;
+import racingcar.model.dto.MoveNumber;
 
 public class RacingInputParser {
     private String NAME_DELIMITER_REGEXP = ",";
@@ -15,13 +16,10 @@ public class RacingInputParser {
         return carNameList;
     }
 
-    public int parseMoveNumber(String line) {
+    public MoveNumber parseMoveNumber(String line) {
         try{
-            int moveNumber = Integer.parseInt(line);
-            if(moveNumber <= 0){
-                throw new IllegalArgumentException("시도할 횟수는 자연수입니다.");
-            }
-            return moveNumber;
+            int number = Integer.parseInt(line);
+            return new MoveNumber(number);
         }
         catch (NumberFormatException e){
             throw new IllegalArgumentException("시도할 횟수는 자연수입니다.");
