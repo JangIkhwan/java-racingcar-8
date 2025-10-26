@@ -35,18 +35,19 @@ public class RacingCarList {
     }
 
     public List<String> getWinnerNames(){
-        int maxDistance = 0;
-        List<String> winnerNames = new ArrayList<>();
+        List<RacingCar> winners = new ArrayList<>();
         for(RacingCar car : racingCars){
-            if(maxDistance < car.getDistance()){
-                winnerNames = new ArrayList<>();
-                winnerNames.add(car.getName());
-                maxDistance = car.getDistance();
+            if(winners.size() == 0){
+                winners.add(car);
             }
-            else if (maxDistance == car.getDistance()){
-                winnerNames.add(car.getName());
+            if(car.win(winners.get(0))){
+                winners.clear();
+                winners.add(car);
+            }
+            if(car.draw(winners.get(0))){
+                winners.add(car);
             }
         }
-        return winnerNames;
+        return winners.stream().map(RacingCar::getName).toList();
     }
 }
