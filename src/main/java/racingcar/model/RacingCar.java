@@ -36,4 +36,12 @@ public class RacingCar {
     public CarState getState() {
         return new CarState(getName(), getDistance());
     }
+
+    public boolean win(RacingCar another) {
+        return distance > another.getDistance();
+    }
+
+    public boolean draw(RacingCar another) {
+        return distance == another.getDistance();
+    }
 }
