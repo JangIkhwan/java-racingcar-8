@@ -20,4 +20,8 @@ public class CarNameList {
     public List<CarName> getCarNames(){
         return carNames;
     }
+
+    public int length(){
+        return this.getCarNames().size();
+    }
 }
