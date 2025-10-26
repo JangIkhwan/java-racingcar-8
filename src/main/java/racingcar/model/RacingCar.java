@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import racingcar.model.dto.CarName;
+import racingcar.model.dto.CarState;
 import racingcar.model.strategy.CarMovingStrategy;
 
 public class RacingCar {
@@ -30,5 +31,9 @@ public class RacingCar {
 
     public int getDistance() {
         return this.distance;
+    }
+
+    public CarState getState() {
+        return new CarState(getName(), getDistance());
     }
 }
