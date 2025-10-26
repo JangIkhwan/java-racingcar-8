@@ -1,9 +1,7 @@
 package racingcar.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.model.dto.CarState;
-import racingcar.model.dto.GameResult;
-import racingcar.model.dto.GameState;
+import racingcar.model.dto.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,10 +10,11 @@ public class RacingGame {
     private List<RacingCar> cars = new ArrayList<>();
     private int moveNumber;
 
-    public RacingGame(List<String> carNames, int moveNumber){
-        for(String name : carNames){
-            cars.add(new RacingCar(name));
-        }
+    public RacingGame(CarNameList carNameList, int moveNumber){
+        this.cars = carNameList.getCarNames().stream()
+                .map(name -> new RacingCar(name))
+                .toList();
+
         this.moveNumber = moveNumber;
     }
 

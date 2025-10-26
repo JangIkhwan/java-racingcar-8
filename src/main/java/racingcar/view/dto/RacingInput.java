@@ -1,18 +1,18 @@
 package racingcar.view.dto;
 
-import java.util.List;
+import racingcar.model.dto.CarNameList;
 
 public class RacingInput {
-    private final List<String> carNames;
+    private final CarNameList carNameList;
     private final int moveNumber;
 
-    public RacingInput(List<String> carNames, int moveNumber) {
-        this.carNames = carNames;
+    public RacingInput(CarNameList carNameList, int moveNumber) {
+        this.carNameList = carNameList;
         this.moveNumber = moveNumber;
     }
 
-    public List<String> getCarNames() {
-        return this.carNames;
+    public CarNameList getCarNameList() {
+        return this.carNameList;
     }
 
     public int getMoveNumber(){

@@ -1,6 +1,6 @@
 package racingcar.model;
 
-import racingcar.model.dto.CarState;
+import racingcar.model.dto.CarName;
 
 public class RacingCar {
     private String name;
@@ -8,6 +8,11 @@ public class RacingCar {
 
     public RacingCar(String name) {
         this.name = name;
+        this.distance = 0;
+    }
+
+    public RacingCar(CarName name) {
+        this.name = name.getValue();
         this.distance = 0;
     }
 

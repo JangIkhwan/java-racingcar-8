@@ -17,7 +17,7 @@ public class RacingController {
 
     public void run(){
         RacingInput input = inputView.getInput();
-        RacingGame game = new RacingGame(input.getCarNames(), input.getMoveNumber());
+        RacingGame game = new RacingGame(input.getCarNameList(), input.getMoveNumber());
         GameResult result = game.play();
         outputView.printResult(result);
     }

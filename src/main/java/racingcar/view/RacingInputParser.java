@@ -1,35 +1,18 @@
 package racingcar.view;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import racingcar.model.dto.CarName;
+import racingcar.model.dto.CarNameList;
 
 public class RacingInputParser {
-    public List<String> parseCarNames(String line) {
-        String[] names = line.split(",");
-        Set<String> nameSet = new HashSet<>();
+    private String NAME_DELIMITER_REGEXP = ",";
+
+    public CarNameList parseCarNameList(String line) {
+        String[] names = line.split(NAME_DELIMITER_REGEXP);
+        CarNameList carNameList = new CarNameList();
         for(String name : names){
-            if(isInvalidName(name)){
-                throw new IllegalArgumentException("자동차 이름은 공백이 아닌 1자 이상 5자 이하의 문자열입니다.");
-            }
-            if(isDuplicateName(nameSet, name)){
-                throw new IllegalArgumentException("자동차 이름은 중복될 수 없습니다.");
-            }
+            carNameList.add(new CarName(name));
         }
-        return Arrays.asList(names);
-    }
-
-    private static boolean isInvalidName(String name) {
-        return name.isEmpty() || name.length() > 5;
-    }
-
-    private boolean isDuplicateName(Set<String> set, String name) {
-        if(set.contains(name)){
-            return true;
-        }
-        set.add(name);
-        return false;
+        return carNameList;
     }
 
     public int parseMoveNumber(String line) {
