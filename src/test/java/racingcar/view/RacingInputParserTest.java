@@ -4,8 +4,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
-import java.util.List;
+import racingcar.model.dto.CarName;
+import racingcar.model.dto.CarNameList;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -20,31 +20,31 @@ class RacingInputParserTest {
         final String input = "abc,def";
 
         // when
-        List<String> names = inputParser.parseCarNames(input);
+        CarNameList carNameList = inputParser.parseCarNameList(input);
 
         // then
-        assertThat(names).containsExactly("abc", "def");
+        assertThat(carNameList.getCarNames()).containsExactly(new CarName("abc"), new CarName("def"));
     }
 
     @DisplayName("자동차 이름의 길이가 1자 미만이거나 5자를 초과하면를 벗어나면 예외가 발생한다")
     @ParameterizedTest
     @ValueSource(strings = {"abcdef,abc", ",abc"})
     void shouldThrowExceptionWhenCarNameIsInvalid(String names){
-        assertThatThrownBy(() -> inputParser.parseCarNames(names))
+        assertThatThrownBy(() -> inputParser.parseCarNameList(names))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("중복되는 자동차 이름이 존재하면 예외가 발생한다")
+    @DisplayName("중복되는 자동차 이름이 없으면 성공한다")
     @Test
     void shouldParseCarNamesWhenNoDuplicateNameExists(){
         // given
         final String duplicateNames = "abcd,abc";
 
         // when
-        List<String> names = inputParser.parseCarNames(duplicateNames);
+        CarNameList carNameList = inputParser.parseCarNameList(duplicateNames);
 
         // then
-        assertThat(names).containsExactly("abcd", "abc");
+        assertThat(carNameList.getCarNames()).containsExactly(new CarName("abcd"), new CarName("abc"));
     }
 
     @DisplayName("중복되는 자동차 이름이 존재하면 예외가 발생한다")
@@ -54,7 +54,7 @@ class RacingInputParserTest {
         final String duplicateNames = "abc,abc";
 
         // when & then
-        assertThatThrownBy(() -> inputParser.parseCarNames(duplicateNames))
+        assertThatThrownBy(() -> inputParser.parseCarNameList(duplicateNames))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
