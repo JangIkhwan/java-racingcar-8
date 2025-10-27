@@ -3,7 +3,7 @@ package racingcar.model;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.model.dto.CarName;
-import racingcar.model.strategy.CarMovingStrategy;
+import racingcar.model.strategy.CarMovingStrategyImpl;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -13,7 +13,7 @@ class RacingCarTest {
     void shouldIncreaseDistanceWhenGoForward(){
         // given
         final CarName name = new CarName("슈퍼카");
-        final CarMovingStrategy strategy = new CarMovingStrategy();
+        final CarMovingStrategyImpl strategy = new CarMovingStrategyImpl();
         RacingCar car = new RacingCar(name, strategy);
 
         // when
