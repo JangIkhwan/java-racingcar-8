@@ -39,6 +39,7 @@ public class RacingCarList {
         for(RacingCar car : racingCars){
             if(winners.size() == 0){
                 winners.add(car);
+                continue;
             }
             if(car.win(winners.get(0))){
                 winners.clear();
