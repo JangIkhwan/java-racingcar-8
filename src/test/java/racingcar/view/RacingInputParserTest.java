@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class RacingInputParserTest {
     private RacingInputParser inputParser = new RacingInputParser();
 
-    @DisplayName("자동차 이름이 1자 이상 5자 이하면 성공한다")
+    @DisplayName("자동차 이름이 1자 이상 5자 이하면 파싱에 성공한다")
     @Test
     void shouldParseCarNamesWhenInputIsValid(){
         // given
@@ -27,7 +27,7 @@ class RacingInputParserTest {
         assertThat(carNameList.getCarNames()).containsExactly(new CarName("abc"), new CarName("def"));
     }
 
-    @DisplayName("자동차 이름의 길이가 1자 미만이거나 5자를 초과하면를 벗어나면 예외가 발생한다")
+    @DisplayName("자동차 이름의 길이가 1자 미만이거나 5자를 초과하면 벗어나면 예외가 발생한다")
     @ParameterizedTest
     @ValueSource(strings = {"abcdef,abc", ",abc"})
     void shouldThrowExceptionWhenCarNameIsInvalid(String names){
@@ -35,7 +35,7 @@ class RacingInputParserTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("중복되는 자동차 이름이 없으면 성공한다")
+    @DisplayName("중복되는 자동차 이름이 없으면 파싱에 성공한다")
     @Test
     void shouldParseCarNamesWhenNoDuplicateNameExists(){
         // given
@@ -59,6 +59,7 @@ class RacingInputParserTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("전진 횟수가 자연수이면 파싱에 성공한다")
     @Test
     void shouldParseMoveNumberWhenNumberIsInteger(){
         // given
