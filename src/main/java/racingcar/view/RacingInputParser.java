@@ -8,6 +8,9 @@ public class RacingInputParser {
     private String NAME_DELIMITER_REGEXP = ",";
 
     public CarNameList parseCarNameList(String line) {
+        if(line.endsWith(",")){
+            throw new IllegalArgumentException("올바르지 않은 입력입니다");
+        }
         String[] names = line.split(NAME_DELIMITER_REGEXP);
         CarNameList carNameList = new CarNameList();
         for(String name : names){
